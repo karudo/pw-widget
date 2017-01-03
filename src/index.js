@@ -4,9 +4,14 @@ import { h, render } from 'preact';
 import './style';
 
 let root;
+let div;
 function init() {
+  if (!div) {
+    div = document.createElement('div');
+    document.body.appendChild(div);
+  }
   let App = require('./components/app').default;
-  root = render(<App />, document.body, root);
+  root = render(<App />, div, root);
 }
 
 // in development, set up HMR:
